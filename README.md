@@ -45,6 +45,14 @@ pytest -q
 python examples/regression.py --steps 300
 ```
 
+Train a small GPT on Tiny Shakespeare for 2,000 MND steps:
+[notebook](examples/tiny_shakespeare.ipynb).
+
+```bash
+pip install -e . matplotlib jupyterlab
+jupyter lab examples/tiny_shakespeare.ipynb
+```
+
 ## Citation
 
 ```bibtex
