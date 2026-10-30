@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=77.0.3"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mndopt"
+version = "0.1.1"
+description = "Matrix Normal Diagonal (MND) optimizer for PyTorch."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+dependencies = ["torch>=2.2"]
+
+[project.optional-dependencies]
+test = ["pytest>=7"]
+
+[tool.setuptools]
+packages = ["mndopt"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
