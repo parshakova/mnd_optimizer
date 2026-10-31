@@ -5,6 +5,7 @@ PyTorch implementation of the Matrix Normal Diagonal (MND) optimizer from
 by Tetiana Parshakova, Robert M. Gower, and Paulo Orenstein (2026).
 
 Requires Python 3.10+ and PyTorch 2.2+.
+Supports dense float32 and float64 parameters.
 
 ```bash
 pip install mndopt
@@ -25,46 +26,8 @@ optimizer.step()
 ```
 
 Matrices use MND; other parameters use AdamW. Both use decoupled weight decay.
-Set `matrix=False` to force AdamW in a parameter group:
-
-```python
-optimizer = MND([
-    {"params": model.weight, "matrix": True},
-    {"params": model.bias, "matrix": False, "lr": 0.001},
-], weight_decay=0.01)
-```
-
-Defaults: `lr=0.003`, `beta=0.925`, `eps=1e-9`, `weight_decay=0`.
-AdamW uses `adam_betas=(0.95, 0.95)` and `adam_eps=1e-8`.
-
-From a clone, run the tests and CPU example:
-
-```bash
-pip install -e '.[test]'
-pytest -q
-python examples/regression.py --steps 300
-```
 
 Train a small GPT on Tiny Shakespeare for 2,000 MND steps:
 [notebook](examples/tiny_shakespeare.ipynb).
-
-```bash
-pip install -e . matplotlib jupyterlab
-jupyter lab examples/tiny_shakespeare.ipynb
-```
-
-## Citation
-
-```bibtex
-@misc{parshakova2026statistical,
-  title  = {A Statistical Viewpoint on Adam, Shampoo and Muon},
-  author = {Parshakova, Tetiana and Gower, Robert M. and Orenstein, Paulo},
-  year   = {2026},
-  eprint = {2610.24839},
-  archivePrefix = {arXiv},
-  primaryClass = {cs.LG},
-  url    = {https://arxiv.org/abs/2610.24839}
-}
-```
 
 Licensed under [Apache 2.0](LICENSE).
